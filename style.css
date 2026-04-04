@@ -118,7 +118,7 @@ nav {
 
 /* --- Sections --- */
 section {
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
 .ascii-divider {
@@ -145,7 +145,7 @@ section {
 }
 
 .section-header h2::before {
-  content: '## ';
+  content: '> ';
   color: var(--muted);
 }
 
