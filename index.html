@@ -63,7 +63,13 @@
           </div>
 
           <div class="bio-row">
-            <div class="bio-sprite"><!-- plasma cell animation coming soon --></div>
+            <div class="bio-sprite">
+              <img id="plasma-sprite"
+                   src="assets/images/Plasma-frame1.png"
+                   alt="Plasma cell illustration"
+                   class="pixel-sprite"
+                   title="Hover to see secretion!" />
+            </div>
             <p class="hero-bio">
               My research program centers on two main areas:
               <a href="https://www.lupusresearch.org/for-researchers/funded-research/grant/reframing-the-modulation-of-b-cell-signaling-inhibitors-in-sle/" target="_blank" rel="noopener">the modulation of BCR signaling in systemic lupus erythematosus (SLE)</a>, supported by a career development award from the Lupus Research Alliance, and the use of <a href="https://arpa-h.gov/news-and-events/arpa-h-announces-project-develop-new-tools-strengthen-immune-system" target="_blank" rel="noopener">mRNA technology</a> to modulate and engineer primary human immune cells — both as therapeutics and as tools for basic research and early-stage drug discovery.
@@ -241,6 +247,32 @@
       clearInterval(animInterval);
       animInterval = null;
       bcell.src = frame(1);
+    });
+
+    // Plasma cell hover animation
+    const plasma = document.getElementById('plasma-sprite');
+    const plasmaFrames = [
+      'assets/images/Plasma-frame1.png',
+      'assets/images/Plasma-frame2.png',
+      'assets/images/Plasma-frame3.png',
+      'assets/images/Plasma-frame4.png',
+      'assets/images/Plasma-frame3.png',
+      'assets/images/Plasma-frame2.png',
+    ];
+    let plasmaInterval = null;
+
+    plasma.addEventListener('mouseenter', () => {
+      let i = 0;
+      plasmaInterval = setInterval(() => {
+        plasma.src = plasmaFrames[i % plasmaFrames.length];
+        i++;
+      }, 160);
+    });
+
+    plasma.addEventListener('mouseleave', () => {
+      clearInterval(plasmaInterval);
+      plasmaInterval = null;
+      plasma.src = plasmaFrames[0];
     });
   </script>
 
