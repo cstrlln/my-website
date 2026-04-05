@@ -49,18 +49,33 @@
           <p class="hero-role">Instructor</p>
           <p class="hero-affiliation">Department of Medicine, Division of Rheumatology &middot; Emory University School of Medicine &middot; Atlanta, GA</p>
 
-          <p class="hero-bio">
-            I am a junior faculty scientist at Emory University School of Medicine studying the biology of human B cells and plasma cells, with a focus on autoimmune disease and next-generation therapeutics.
-          </p>
+          <div class="bio-row">
+            <div class="bio-sprite">
+              <img id="bcell-sprite"
+                   src="assets/images/Bcell-frame1.png"
+                   alt="B cell illustration"
+                   class="pixel-sprite"
+                   title="Hover to activate!" />
+            </div>
+            <p class="hero-bio">
+              I am a junior faculty scientist at Emory University School of Medicine studying the biology of human B cells and plasma cells, with a focus on autoimmune disease and next-generation therapeutics.
+            </p>
+          </div>
 
-          <p class="hero-bio">
-            My research program centers on two main areas:
-            <a href="https://www.lupusresearch.org/for-researchers/funded-research/grant/reframing-the-modulation-of-b-cell-signaling-inhibitors-in-sle/" target="_blank" rel="noopener">the modulation of BCR signaling in systemic lupus erythematosus (SLE)</a>, supported by a career development award from the Lupus Research Alliance, and the use of <a href="https://arpa-h.gov/news-and-events/arpa-h-announces-project-develop-new-tools-strengthen-immune-system" target="_blank" rel="noopener">mRNA technology</a> to modulate and engineer primary human immune cells — both as therapeutics and as tools for basic research and early-stage drug discovery.
-          </p>
+          <div class="bio-row">
+            <div class="bio-sprite"><!-- plasma cell animation coming soon --></div>
+            <p class="hero-bio">
+              My research program centers on two main areas:
+              <a href="https://www.lupusresearch.org/for-researchers/funded-research/grant/reframing-the-modulation-of-b-cell-signaling-inhibitors-in-sle/" target="_blank" rel="noopener">the modulation of BCR signaling in systemic lupus erythematosus (SLE)</a>, supported by a career development award from the Lupus Research Alliance, and the use of <a href="https://arpa-h.gov/news-and-events/arpa-h-announces-project-develop-new-tools-strengthen-immune-system" target="_blank" rel="noopener">mRNA technology</a> to modulate and engineer primary human immune cells — both as therapeutics and as tools for basic research and early-stage drug discovery.
+            </p>
+          </div>
 
-          <p class="hero-bio">
-            My work integrates wet- and dry-lab multiomics approaches. I am currently developing my independent program under the mentorship of <a href="https://med.emory.edu/departments/medicine/research/centers-institutes/lowance/lowance-center-members.html" target="_blank" rel="noopener">Dr. Iñaki Sanz</a> and <a href="https://med.emory.edu/departments/medicine/divisions/rheumatology/research/labs/lee.html" target="_blank" rel="noopener">Dr. Frances Eun-Hyung Lee</a>.
-          </p>
+          <div class="bio-row">
+            <div class="bio-sprite"><!-- mRNA animation coming soon --></div>
+            <p class="hero-bio">
+              My work integrates wet- and dry-lab multiomics approaches. I am currently developing my independent program under the mentorship of <a href="https://med.emory.edu/departments/medicine/research/centers-institutes/lowance/lowance-center-members.html" target="_blank" rel="noopener">Dr. Iñaki Sanz</a> and <a href="https://med.emory.edu/departments/medicine/divisions/rheumatology/research/labs/lee.html" target="_blank" rel="noopener">Dr. Frances Eun-Hyung Lee</a>.
+            </p>
+          </div>
 
           <div class="hero-links">
             <a href="https://scholar.google.com/citations?user=7oFp7nQAAAAJ&hl=en" class="btn" target="_blank" rel="noopener">google scholar</a>
@@ -170,6 +185,31 @@
     const now = new Date();
     document.getElementById('year').textContent = now.getFullYear();
     document.getElementById('updated').textContent = now.toISOString().slice(0, 10);
+
+    // B cell hover animation
+    const bcell = document.getElementById('bcell-sprite');
+    const frames = [
+      'assets/images/Bcell-frame1.png',
+      'assets/images/Bcell-frame2.png',
+      'assets/images/Bcell-frame3.png',
+      'assets/images/Bcell-frame2.png',
+    ];
+    let animInterval = null;
+    let frameIndex = 0;
+
+    bcell.addEventListener('mouseenter', () => {
+      frameIndex = 0;
+      animInterval = setInterval(() => {
+        frameIndex = (frameIndex + 1) % frames.length;
+        bcell.src = frames[frameIndex];
+      }, 100);
+    });
+
+    bcell.addEventListener('mouseleave', () => {
+      clearInterval(animInterval);
+      animInterval = null;
+      bcell.src = frames[0];
+    });
   </script>
 
 </body>

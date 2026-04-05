@@ -252,6 +252,33 @@ section {
   color: var(--text);
 }
 
+/* --- Bio rows with sprites --- */
+.bio-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bio-row .hero-bio {
+  margin-bottom: 0;
+}
+
+.bio-sprite {
+  flex-shrink: 0;
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pixel-sprite {
+  width: 64px;
+  height: auto;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
 /* --- News --- */
 .news-list {
   display: flex;
