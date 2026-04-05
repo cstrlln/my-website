@@ -188,27 +188,59 @@
 
     // B cell hover animation
     const bcell = document.getElementById('bcell-sprite');
-    const frames = [
-      'assets/images/Bcell-frame1.png',
-      'assets/images/Bcell-frame2.png',
-      'assets/images/Bcell-frame3.png',
-      'assets/images/Bcell-frame2.png',
-    ];
+    const shakeSeq  = [1, 2, 3, 2];
+    const wavesSeq  = [4, 5, 6, 4, 5, 6, 4, 5, 6];   // 3 loops of frames 4-6
+    const senseSeq  = [7, 8, 9, 8, 7];       // ping-pong for looping
+    const frame = n => `assets/images/Bcell-frame${n}.png`;
+
     let animInterval = null;
-    let frameIndex = 0;
+    let isHovered = false;
+
+    function runSequence(seq, interval, onDone) {
+      let i = 0;
+      animInterval = setInterval(() => {
+        bcell.src = frame(seq[i]);
+        i++;
+        if (i >= seq.length) {
+          clearInterval(animInterval);
+          if (onDone) onDone();
+        }
+      }, interval);
+    }
+
+    function startCycle() {
+      if (!isHovered) return;
+      runSequence(shakeSeq, 100, () => {
+        if (!isHovered) return;
+        runSequence(wavesSeq, 120, () => {
+          if (!isHovered) return;
+          // spider-sense × 3 then restart
+          const totalFrames = senseSeq.length * 3;
+          let i = 0;
+          animInterval = setInterval(() => {
+            if (!isHovered) return;
+            bcell.src = frame(senseSeq[i % senseSeq.length]);
+            i++;
+            if (i >= totalFrames) {
+              clearInterval(animInterval);
+              startCycle();
+            }
+          }, 120);
+        });
+      });
+    }
 
     bcell.addEventListener('mouseenter', () => {
-      frameIndex = 0;
-      animInterval = setInterval(() => {
-        frameIndex = (frameIndex + 1) % frames.length;
-        bcell.src = frames[frameIndex];
-      }, 100);
+      isHovered = true;
+      clearInterval(animInterval);
+      startCycle();
     });
 
     bcell.addEventListener('mouseleave', () => {
+      isHovered = false;
       clearInterval(animInterval);
       animInterval = null;
-      bcell.src = frames[0];
+      bcell.src = frame(1);
     });
   </script>
 
