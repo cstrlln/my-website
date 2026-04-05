@@ -77,7 +77,13 @@
           </div>
 
           <div class="bio-row">
-            <div class="bio-sprite"><!-- mRNA animation coming soon --></div>
+            <div class="bio-sprite">
+              <img id="mrna-sprite"
+                   src="assets/images/mrna-frame1.png"
+                   alt="mRNA illustration"
+                   class="pixel-sprite"
+                   title="Hover to animate!" />
+            </div>
             <p class="hero-bio">
               My work integrates wet- and dry-lab multiomics approaches. I am currently developing my independent program under the mentorship of <a href="https://med.emory.edu/departments/medicine/research/centers-institutes/lowance/lowance-center-members.html" target="_blank" rel="noopener">Dr. Iñaki Sanz</a> and <a href="https://med.emory.edu/departments/medicine/divisions/rheumatology/research/labs/lee.html" target="_blank" rel="noopener">Dr. Frances Eun-Hyung Lee</a>.
             </p>
@@ -273,6 +279,30 @@
       clearInterval(plasmaInterval);
       plasmaInterval = null;
       plasma.src = plasmaFrames[0];
+    });
+
+    // mRNA hover animation
+    const mrna = document.getElementById('mrna-sprite');
+    const mrnaFrames = [
+      'assets/images/mrna-frame1.png',
+      'assets/images/mrna-frame2.png',
+      'assets/images/mrna-frame3.png',
+      'assets/images/mrna-frame4.png',
+    ];
+    let mrnaInterval = null;
+
+    mrna.addEventListener('mouseenter', () => {
+      let i = 0;
+      mrnaInterval = setInterval(() => {
+        mrna.src = mrnaFrames[i % mrnaFrames.length];
+        i++;
+      }, 200);
+    });
+
+    mrna.addEventListener('mouseleave', () => {
+      clearInterval(mrnaInterval);
+      mrnaInterval = null;
+      mrna.src = mrnaFrames[0];
     });
   </script>
 

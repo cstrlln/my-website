@@ -157,7 +157,7 @@ section {
 
 /* --- Hero / About --- */
 .hero {
-  padding: 3rem 0 2rem;
+  padding: 1rem 0 2rem;
 }
 
 .hero-ascii {
@@ -266,7 +266,7 @@ section {
 
 .bio-sprite {
   flex-shrink: 0;
-  width: 64px;
+  width: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,6 +277,14 @@ section {
   height: auto;
   image-rendering: pixelated;
   cursor: pointer;
+}
+
+#plasma-sprite {
+  width: 82px;
+}
+
+#mrna-sprite {
+  width: 90px;
 }
 
 /* --- News --- */
