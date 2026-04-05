@@ -509,6 +509,26 @@ footer a:hover { background: var(--text); color: var(--bg); }
     flex-direction: column-reverse;
   }
 
+  .hero-ascii {
+    display: none;
+  }
+
+  .pixel-sprite {
+    width: 48px;
+  }
+
+  #plasma-sprite {
+    width: 62px;
+  }
+
+  #mrna-sprite {
+    width: 62px;
+  }
+
+  .bio-sprite {
+    width: 70px;
+  }
+
   .news-item {
     grid-template-columns: 1fr;
     gap: 0.15rem;
