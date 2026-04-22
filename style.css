@@ -180,11 +180,12 @@ section {
 }
 
 .headshot {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border: 2px solid var(--border);
   flex-shrink: 0;
+  margin-right: -30px;
 }
 
 .hero-name {
